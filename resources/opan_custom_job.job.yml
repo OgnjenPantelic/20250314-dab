@@ -1,0 +1,23 @@
+resources:
+  jobs:
+    opan_custom_job:
+      name: opan_custom_job
+      tasks:
+        - task_key: my_taks2
+          notebook_task:
+            notebook_path: /Workspace/Users/ognjen.pantelic@databricks.com/20250314-dab/src/my_notebook1
+            source: WORKSPACE
+          existing_cluster_id: 0118-165440-l8erfx3g
+        - task_key: my_task2
+          depends_on:
+            - task_key: my_taks2
+          notebook_task:
+            notebook_path: /Workspace/Users/ognjen.pantelic@databricks.com/20250314-dab/src/my_notebook2
+            source: WORKSPACE
+          existing_cluster_id: 0118-165440-l8erfx3g
+      git_source:
+        git_url: https://github.com/OgnjenPantelic/20250314-dab
+        git_provider: gitHub
+        git_branch: main
+      queue:
+        enabled: true
