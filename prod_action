@@ -31,7 +31,7 @@ jobs:
       - run: databricks bundle deploy
         working-directory: .
         env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_TOKEN: ${{ secrets.DB_TOKEN }}
           DATABRICKS_BUNDLE_ENV: prod
 
   # Validate, deploy, and then run the bundle.
@@ -52,8 +52,8 @@ jobs:
 
       # Run the Databricks workflow named "my-job" as defined in the
       # bundle that was just deployed.
-      - run: databricks bundle run my-job --refresh-all
+      - run: databricks bundle run opan_custom_job --refresh-all
         working-directory: .
         env:
-          DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+          DATABRICKS_TOKEN: ${{ secrets.DB_TOKEN }}
           DATABRICKS_BUNDLE_ENV: prod
